@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Loading from './components/Loading';
+import ProjectImageCarousel from './components/ProjectImageCarousel';
 import loadProjectImages from './utils/load-project-images';
 
 function App() {
@@ -24,7 +25,11 @@ function App() {
     );
   }
 
-  return <div className="App">{images.length}</div>;
+  return (
+    <div className="App">
+      <ProjectImageCarousel images={images} />
+    </div>
+  );
 }
 
 export default App;
