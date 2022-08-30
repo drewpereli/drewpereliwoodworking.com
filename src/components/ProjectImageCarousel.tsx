@@ -13,6 +13,7 @@ export default function ProjectImageCarousel({ images }: { images: ProjectImage[
       showThumbs={false}
       useKeyboardArrows={true}
       showStatus={false}
+      className="project-image-carousel"
     >
       {projectImageComponents}
     </Carousel>

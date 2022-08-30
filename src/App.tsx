@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Loading from './components/Loading';
 import ProjectImageCarousel from './components/ProjectImageCarousel';
+import TopBar from './components/TopBar';
 import loadProjectImages from './utils/load-project-images';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <div className="App">
+      <TopBar />
       <ProjectImageCarousel images={images} />
     </div>
   );
