@@ -14,42 +14,11 @@ html {
 }
 
 body {
-  margin: 0;
-}
-
-.App {
-  height: 100vh;
+  @apply m-0;
 }
 
 .top-bar {
   height: var(--nav-bar-height);
-  padding: 0.5rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: black;
-  position: relative;
-  box-shadow: 0px 4px 4px black;
-  z-index: 1;
-}
-
-.contact-button {
-  border: 0;
-  background: linear-gradient(25deg, #FF4437, #241490);
-  padding: 0.5rem 1rem;
-  border-radius: 0.125rem;
-  box-shadow: 0px 0px 5px #FF4437;
-  cursor: pointer;
-  transition: transform 200ms;
-  font-weight: 700;
-}
-
-.contact-button:hover {
-  transform: translateY(-1px) scale(1.02);
-}
-
-.contact-button:active {
-  transform: translateY(1px) scale(1.02);
 }
 
 .project-image-carousel {

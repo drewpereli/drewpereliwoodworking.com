@@ -20,14 +20,14 @@ function App() {
 
   if (!images) {
     return (
-      <div className="App">
+      <div className="App h-screen">
         <Loading />
       </div>
     );
   }
 
   return (
-    <div className="App">
+    <div className="App h-screen">
       <TopBar />
       <ProjectImageCarousel images={images} />
     </div>
