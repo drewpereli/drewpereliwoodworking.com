@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import './App.css';
+import ContactForm from './components/ContactForm';
 import Loading from './components/Loading';
+import { Modal } from './components/Modal';
 import ProjectImageCarousel from './components/ProjectImageCarousel';
 import TopBar from './components/TopBar';
+import { ContactModalContext } from './contexts';
 import loadProjectImages from './utils/load-project-images';
 
 function App() {
   const [images, setImages] = useState<ProjectImage[] | undefined>();
+  const [showingContactModal, setShowingContactModal] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,8 +32,18 @@ function App() {
 
   return (
     <div className="App h-screen">
-      <TopBar />
-      <ProjectImageCarousel images={images} />
+      <ContactModalContext.Provider value={{ showingContactModal, setShowingContactModal }}>
+        <TopBar />
+        <ProjectImageCarousel images={images} />
+      </ContactModalContext.Provider>
+
+      {showingContactModal && (
+        <Modal title="Get in Touch" onClose={() => setShowingContactModal(false)}>
+          <div className="w-full flex justify-center">
+            <ContactForm className="w-full max-w-md" />
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }
