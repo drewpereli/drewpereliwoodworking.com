@@ -24,7 +24,7 @@ function App() {
 
   if (!images) {
     return (
-      <div className="App h-screen">
+      <div className="App h-screen flex items-center justify-center">
         <Loading />
       </div>
     );
