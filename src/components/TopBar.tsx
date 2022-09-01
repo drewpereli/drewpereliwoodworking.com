@@ -10,15 +10,15 @@ export default function TopBar() {
       <div className="space-y-8 md:space-y-4">
         <h2 className="font-bold text-2xl">Drew Pereli Woodworking</h2>
         <div className="flex items-center justify-between space-x-4">
-          <SocialLink href="https://www.instagram.com/drewpereli/">
+          <SocialLink href="https://www.instagram.com/drewpereli/" ariaLabel="instagram">
             <InstagramLogo width={16} height={16} />
           </SocialLink>
 
-          <SocialLink href="https://www.etsy.com/shop/DrewPereliWoodwork">
+          <SocialLink href="https://www.etsy.com/shop/DrewPereliWoodwork" ariaLabel="etsy">
             <EtsyLogo width={16} height={16} />
           </SocialLink>
 
-          <SocialLink href="mailto:drew@drewpereliwoodworking.com">
+          <SocialLink href="mailto:drew@drewpereliwoodworking.com" ariaLabel="email">
             <span className="md:hidden">
               <Mail width={16} height={16} />
             </span>
@@ -38,9 +38,9 @@ export default function TopBar() {
   );
 }
 
-function SocialLink({ href, children }: { href: string; children: ReactNode }) {
+function SocialLink({ href, ariaLabel, children }: { href: string; children: ReactNode; ariaLabel: string }) {
   return (
-    <a href={href} target="_blank" className="text-blue-300 hover:text-blue-400 text-lg">
+    <a href={href} target="_blank" aria-label={ariaLabel} className="text-blue-300 hover:text-blue-400 text-lg">
       {children}
     </a>
   );
