@@ -1,9 +1,9 @@
 import { createContext, useEffect, useState } from 'react';
 import './App.css';
 import ContactForm from './components/ContactForm';
-import Loading from './components/Loading';
 import { Modal } from './components/Modal';
 import ProjectImageCarousel from './components/ProjectImageCarousel';
+import { Loading } from './components/Svgs';
 import TopBar from './components/TopBar';
 import { ContactModalContext } from './contexts';
 import loadProjectImages from './utils/load-project-images';

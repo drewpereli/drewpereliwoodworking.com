@@ -1,9 +1,16 @@
 @import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 :root {
-  --nav-bar-height: 4rem;
+  --nav-bar-height: 12rem;
   --carousel-height: calc(100vh - var(--nav-bar-height));
 }
+
+@screen md {
+  :root {
+    --nav-bar-height: 8rem;
+  }
+}
+
 
 html {
   box-sizing: border-box;
