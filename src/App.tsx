@@ -34,7 +34,7 @@ function App() {
     <div className="App h-screen">
       <ContactModalContext.Provider value={{ showingContactModal, setShowingContactModal }}>
         <TopBar />
-        <ProjectImageCarousel images={images} />
+        <ProjectImageCarousel images={images.sort((a, b) => a.order - b.order)} />
       </ContactModalContext.Provider>
 
       {showingContactModal && (

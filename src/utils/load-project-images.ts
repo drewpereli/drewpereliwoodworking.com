@@ -7,6 +7,7 @@ export default async function loadProjectImages(): Promise<ProjectImage[]> {
 			items {
 				sys {id}
 				image {url}
+				order
 			}
 		}
 	}
