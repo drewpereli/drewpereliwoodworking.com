@@ -6,9 +6,9 @@ export default function TopBar() {
   const { setShowingContactModal } = useContext(ContactModalContext);
 
   return (
-    <div className="top-bar px-12 py-4 bg-black relative shadow-lg z-10 space-y-8 md:flex md:items-center md:space-y-0 md:justify-between">
+    <div className="top-bar px-12 py-4 bg-black relative shadow-lg z-10 flex flex-col md:flex-row md:items-center justify-between">
       <div className="space-y-8 md:space-y-4">
-        <h2 className="font-bold text-2xl">Drew Pereli Woodworking</h2>
+        <h2 className="font-bold text-xl md:text-3xl">Drew Pereli Woodworking</h2>
         <div className="flex items-center justify-between space-x-4">
           <SocialLink href="https://www.instagram.com/drewpereli/" ariaLabel="instagram">
             <InstagramLogo width={16} height={16} />
