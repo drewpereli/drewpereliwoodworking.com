@@ -32,11 +32,11 @@ export default function ContactForm({ className }: { className: string }) {
       <div className="space-y-4">
         <InputGroup label="Name" value={name} onInput={setName} />
 
-        <InputGroup label="Email" value={email} onInput={setEmail} />
+        <InputGroup label="Email" value={email} onInput={setEmail} type="email" required />
 
         <InputGroupWrapper>
-          <Label label="Message" htmlFor="contact-form-message" />
-          <TextArea id="contact-form-message" value={message} onInput={setMessage} />
+          <Label label="Message" htmlFor="contact-form-message" required />
+          <TextArea id="contact-form-message" value={message} onInput={setMessage} required />
         </InputGroupWrapper>
       </div>
 
@@ -50,26 +50,54 @@ export default function ContactForm({ className }: { className: string }) {
   );
 }
 
-function Label({ label, htmlFor }: { htmlFor: string; label: string }) {
+function Label({ label, htmlFor, required }: { htmlFor: string; label: string; required?: boolean }) {
   return (
-    <label htmlFor={htmlFor} className="text-sm font-bold">
-      {label}
-    </label>
+    <span className="space-x-1">
+      <label htmlFor={htmlFor} className="text-sm font-bold">
+        {label}
+      </label>
+
+      {required && <span className="text-red-500">*</span>}
+    </span>
   );
 }
 
-function Input({ id, value, onInput }: { id: string; value: string; onInput: (val: string) => unknown }) {
+function Input({
+  id,
+  value,
+  onInput,
+  required,
+  type,
+}: {
+  id: string;
+  value: string;
+  onInput: (val: string) => unknown;
+  required?: boolean;
+  type?: string;
+}) {
   return (
     <input
       id={id}
       value={value}
       onInput={e => onInput((e.target as HTMLInputElement).value)}
       className="bg-slate-100 rounded-sm text-neutral-900 mt-1 p-1"
+      required={required}
+      type={type}
     />
   );
 }
 
-function TextArea({ id, value, onInput }: { id: string; value: string; onInput: (val: string) => unknown }) {
+function TextArea({
+  id,
+  value,
+  onInput,
+  required,
+}: {
+  id: string;
+  value: string;
+  onInput: (val: string) => unknown;
+  required?: boolean;
+}) {
   return (
     <textarea
       id={id}
@@ -77,6 +105,7 @@ function TextArea({ id, value, onInput }: { id: string; value: string; onInput: 
       onInput={e => onInput((e.target as HTMLInputElement).value)}
       className="bg-slate-100 rounded-sm text-neutral-900 mt-1 p-1"
       rows={7}
+      required={required}
     />
   );
 }
@@ -85,13 +114,25 @@ function InputGroupWrapper({ children }: { children: ReactNode }) {
   return <div className="flex flex-col space-y-2">{children}</div>;
 }
 
-function InputGroup({ label, value, onInput }: { label: string; value: string; onInput: (val: string) => unknown }) {
+function InputGroup({
+  label,
+  value,
+  onInput,
+  required,
+  type,
+}: {
+  label: string;
+  value: string;
+  onInput: (val: string) => unknown;
+  required?: boolean;
+  type?: string;
+}) {
   const id = useId();
 
   return (
     <InputGroupWrapper>
-      <Label label={label} htmlFor={id} />
-      <Input id={id} value={value} onInput={onInput} />
+      <Label label={label} htmlFor={id} required={required} />
+      <Input id={id} value={value} onInput={onInput} required={required} type={type} />
     </InputGroupWrapper>
   );
 }
