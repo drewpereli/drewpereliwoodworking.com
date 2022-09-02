@@ -6,25 +6,13 @@ export default function TopBar() {
   const { setShowingContactModal } = useContext(ContactModalContext);
 
   return (
-    <div className="top-bar px-12 py-4 bg-black relative shadow-lg z-10 flex flex-col md:flex-row md:items-center justify-between">
-      <div className="space-y-8 md:space-y-4">
-        <h2 className="font-bold text-xl md:text-3xl">Drew Pereli Woodworking</h2>
-        <div className="flex items-center justify-between space-x-4">
-          <SocialLink href="https://www.instagram.com/drewpereli/" ariaLabel="instagram">
-            <InstagramLogo width={16} height={16} />
-          </SocialLink>
+    <div className="top-bar px-4 py-4 md:px-12 md:py-4 bg-black relative shadow-lg z-10 flex flex-col md:flex-row md:items-center justify-between">
+      <Title className="md:hidden" />
+      <SocialLinkList className="md:hidden" />
 
-          <SocialLink href="https://www.etsy.com/shop/DrewPereliWoodwork" ariaLabel="etsy">
-            <EtsyLogo width={16} height={16} />
-          </SocialLink>
-
-          <SocialLink href="mailto:drew@drewpereliwoodworking.com" ariaLabel="email">
-            <span className="md:hidden">
-              <Mail width={16} height={16} />
-            </span>
-            <span className="hidden md:inline">drew@drewpereliwoodworking.com</span>
-          </SocialLink>
-        </div>
+      <div className="hidden md:block space-y-4">
+        <Title />
+        <SocialLinkList />
       </div>
 
       <button
@@ -40,8 +28,33 @@ export default function TopBar() {
 
 function SocialLink({ href, ariaLabel, children }: { href: string; children: ReactNode; ariaLabel: string }) {
   return (
-    <a href={href} target="_blank" aria-label={ariaLabel} className="text-blue-300 hover:text-blue-400 text-lg">
+    <a href={href} target="_blank" aria-label={ariaLabel} className="text-stone-300/90 hover:text-stone-400 text-lg">
       {children}
     </a>
   );
+}
+
+function SocialLinkList({ className }: { className?: string }) {
+  return (
+    <div className={`flex items-center justify-between space-x-4 ${className}`}>
+      <SocialLink href="https://www.instagram.com/drewpereli/" ariaLabel="instagram">
+        <InstagramLogo width={16} height={16} />
+      </SocialLink>
+
+      <SocialLink href="https://www.etsy.com/shop/DrewPereliWoodwork" ariaLabel="etsy">
+        <EtsyLogo width={16} height={16} />
+      </SocialLink>
+
+      <SocialLink href="mailto:drew@drewpereliwoodworking.com" ariaLabel="email">
+        <span className="md:hidden">
+          <Mail width={16} height={16} />
+        </span>
+        <span className="hidden md:inline font-medium">drew@drewpereliwoodworking.com</span>
+      </SocialLink>
+    </div>
+  );
+}
+
+function Title({ className }: { className?: string }) {
+  return <h2 className={`font-bold text-xl md:text-3xl text-white ${className}`}>Drew Pereli Woodworking</h2>;
 }
