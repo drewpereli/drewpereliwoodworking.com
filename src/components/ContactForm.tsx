@@ -125,7 +125,7 @@ function TextArea({
 }
 
 function InputGroupWrapper({ children }: { children: ReactNode }) {
-  return <div className="flex flex-col space-y-2">{children}</div>;
+  return <div className="flex flex-col space-y-1 md:space-y-2">{children}</div>;
 }
 
 function InputGroup({
