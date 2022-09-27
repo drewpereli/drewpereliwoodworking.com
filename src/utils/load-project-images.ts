@@ -28,5 +28,13 @@ export default async function loadProjectImages(): Promise<ProjectImage[]> {
     throw errors;
   }
 
-  return data.projectImageCollection.items;
+  return data.projectImageCollection.items.map((item: ProjectImage) => {
+    const url = new URL(item.image.url);
+
+    url.searchParams.append('fm', 'webp');
+
+    item.image.url = url.toString();
+
+    return item;
+  });
 }
